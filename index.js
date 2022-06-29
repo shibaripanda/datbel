@@ -483,7 +483,7 @@ bot.action ('btn_101', async (ctx) => {
 else { if ((post[(post.findIndex(item => item.id == ctx.from.id))].post) == "1") {
     let mes = []
     mes = await ctx.telegram.sendMessage(group, (info[(info.findIndex(item => item.id == ctx.from.id))].info)), 
-    await Post.updateOne({profiledating: 'profiledating', id: ctx.from.id}, { 
+    await Bel.updateOne({profiledating: 'profiledating', id: ctx.from.id}, { 
             profile: 'ok',
               idmes: mes.message_id,
         profiledata: mes.text
