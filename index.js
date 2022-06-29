@@ -590,9 +590,10 @@ bot.on('message', async(ctx) => {
     infiwords[([(infiwords.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, infiwords: ctx.message.text});
 
 
-if (username1[([(username1.findIndex(item => item.id == ctx.from.id))])] != undefined) {
-    username1[([(username1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, username1: ctx.from.username})}
-else {username1[([(username1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, username1:' '})}
+if (username1[([(username1.findIndex(item => item.id == ctx.from.id))])] == undefined) {
+  username1[([(username1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, username1:' '})
+    }
+else {username1[([(username1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, username1: ctx.from.username})}
   }
 
   
