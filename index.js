@@ -78,7 +78,6 @@ bot.start(async (ctx) => {
   let d = username1.findIndex(item => item.id == ctx.from.id)
   if (d != -1) {username1.splice(username1.findIndex(item => item.id == ctx.from.id),1)};
   username1.push({id: ctx.from.id, username1: ctx.from.username})
-  console.log(username1)
   let f = post.findIndex(item => item.id == ctx.from.id)
   if (f != -1) {post.splice(post.findIndex(item => item.id == ctx.from.id),1)};
   post.push({id: ctx.from.id})
@@ -454,10 +453,13 @@ bot.action ('btn_101', async (ctx) => {
 }
   else if ((bdinfo[([(bdinfo.findIndex(item => item.id == ctx.from.id))])].profile) == 'delete', (post[(post.findIndex(item => item.id == ctx.from.id))].post) == "1") {
   let mes = []
-  mes = await ctx.telegram.sendMessage(-1001670234693, (info[(info.findIndex(item => item.id == ctx.from.id))].info), Markup.inlineKeyboard(
-    [
-       [Markup.button.callback('Message', 'btn_150'), Markup.button.callback('Message', '150'), Markup.button.callback('Message', '150')]
-    ])), 
+  mes = await ctx.telegram.sendMessage(-1001670234693, (info[(info.findIndex(item => item.id == ctx.from.id))].info),
+  //  Markup.inlineKeyboard(
+  //   [
+  //      [Markup.button.callback('Message', 'btn_150'), Markup.button.callback('Message', '150'), Markup.button.callback('Message', '150')]
+  //   ])
+    )
+    , 
   await Bel.updateOne({profiledating: 'profiledating', id: ctx.from.id}, { 
           profile: 'ok',
             idmes: mes.message_id,
