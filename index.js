@@ -313,7 +313,7 @@ bot.action ('btn_1', async (ctx) => {
   emailon[([(emailon.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, emailon: 0})
   end1[([(end1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, end1: 0})
 
-  if (username1[([(username1.findIndex(item => item.id == ctx.from.id))])] == undefined){
+  if (username1[([(username1.findIndex(item => item.id == ctx.from.id))])].username1 == undefined){
     await ctx.reply("У тебя нет юзернейма. Тебя не смогут найти!\nУстанови юзернейм в настройказ телеграм\nСпасибо за внимаение!")
   }
 else{
@@ -591,7 +591,7 @@ bot.on('message', async(ctx) => {
     infiwords[([(infiwords.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, infiwords: ctx.message.text});
 
 
-if (username1[([(username1.findIndex(item => item.id == ctx.from.id))])] == undefined) {
+if (username1[([(username1.findIndex(item => item.id == ctx.from.id))])].username1 == undefined) {
   username1[([(username1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, username1:' '})
     }
 else {username1[([(username1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, username1: ctx.from.username})}
