@@ -492,11 +492,12 @@ bot.action ('btn_200', async (ctx) => {
   }
   else {if ((del1[(del1.findIndex(item => item.id == ctx.from.id))].del1) == "0") {
     let dell2 = []
-    dell2 = await Bel.find({profiledating: 'profiledating', id: ctx.from.id});
+    dell2.push({id: ctx.from.id})
+    dell2[([(dell2.findIndex(item => item.id == ctx.from.id))])]= await Bel.find({profiledating: 'profiledating', id: ctx.from.id});
     await Bel.updateOne({profiledating: 'profiledating', id: ctx.from.id}, { 
           profile: 'deleted'
       })
-  await ctx.telegram.deleteMessage(-1001670234693, dell2[0].idmes)  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  await ctx.telegram.deleteMessage(-1001670234693, dell2[([(dell2.findIndex(item => item.id == ctx.from.id))])].idmes)  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   await ctx.replyWithHTML("Анкета удалена! ❌\n\nПерезапустите бот.\n\nПерезапуск ➡️ <b>/start</b> ✅")
   await Bel.updateOne({profiledating: 'profiledating', id: ctx.from.id}, { 
      profiledata: 'Вы удалили вашу анкету',
