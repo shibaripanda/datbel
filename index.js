@@ -32,7 +32,7 @@ let post = []
 let email1 = []
 let emailon  = []
 
-const group = -1001738151348
+const group = -1001670234693
 const bazaall = ["test@mail.com", "vip2@mail.com", "vip@mail.com", "2vip@mail.com"]
 const bazashcf1 = ["vip@mail.com", "2vip@mail.com"]
 const bazashcf2 = ["vip2@mail.com", "2vip@mail.com"]
