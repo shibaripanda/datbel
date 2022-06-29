@@ -13,6 +13,7 @@ mongoose
 .then((res)=> console.log('connect to DB'))
 .catch((error) => console.log(error))
 
+const group = -1001670234693
 
 let bdinfo = []
 let info = []
@@ -32,7 +33,7 @@ let post = []
 let email1 = []
 let emailon  = []
 
-const group = -1001670234693
+
 const bazaall = ["test@mail.com", "vip2@mail.com", "vip@mail.com", "2vip@mail.com"]
 const bazashcf1 = ["vip@mail.com", "2vip@mail.com"]
 const bazashcf2 = ["vip2@mail.com", "2vip@mail.com"]
@@ -154,14 +155,18 @@ else{
 }
 )
 
-bot.action ('btn_250', (ctx) => {
-  if ((bdinfo.find(item => item.del1 == 0)) == undefined){ 
-    ctx.replyWithHTML('Перезапустите бот.\n\nПерезапуск ➡️ <b>/start</b> ✅')
- }
-else{
-  ctx.reply(bdinfo[([(bdinfo.findIndex(item => item.id == ctx.from.id))])].profiledata)
+bot.action ('btn_250', async (ctx) => {
+  let ank = []
+  ank = await Bel.find({id: ctx.from.id})
+  
+
+//   if ((bdinfo.find(item => item.del1 == 0)) == undefined){ 
+//     ctx.replyWithHTML('Перезапустите бот.\n\nПерезапуск ➡️ <b>/start</b> ✅')
+//  }
+// else{
+  await ctx.reply(ank[0].profiledata)
 }
- })
+ )
 
 // bot.action ('btn_400', async (ctx) => {
 //  bdinfo[([(bdinfo.findIndex(item => item.id == ctx.from.id))])] = await Post.findOne({id: ctx.from.id})
@@ -510,8 +515,7 @@ if (dell3[0].profile == 'ok') {
      profile: 'deleted'
     })
   del1[([(del1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, del1: 1})
-  dell2 = splice(0,1)
-  dell3 = splice(0,1)}
+ }
 } }
 else {await ctx.replyWithHTML("У вас нет анкеты.\n\nПерезапуск ➡️ <b>/start</b> ✅")}
 })
