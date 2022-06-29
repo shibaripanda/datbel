@@ -32,6 +32,7 @@ let post = []
 let email1 = []
 let emailon  = []
 
+const group = -1001738151348
 const bazaall = ["test@mail.com", "vip2@mail.com", "vip@mail.com", "2vip@mail.com"]
 const bazashcf1 = ["vip@mail.com", "2vip@mail.com"]
 const bazashcf2 = ["vip2@mail.com", "2vip@mail.com"]
@@ -154,8 +155,13 @@ else{
 )
 
 bot.action ('btn_250', (ctx) => {
+  if ((bdinfo.find(item => item.del1 == 0)) == undefined){ 
+    ctx.replyWithHTML('Перезапустите бот.\n\nПерезапуск ➡️ <b>/start</b> ✅')
+ }
+else{
   ctx.reply(bdinfo[([(bdinfo.findIndex(item => item.id == ctx.from.id))])].profiledata)
-  })
+}
+ })
 
 // bot.action ('btn_400', async (ctx) => {
 //  bdinfo[([(bdinfo.findIndex(item => item.id == ctx.from.id))])] = await Post.findOne({id: ctx.from.id})
@@ -305,9 +311,9 @@ bot.action ('btn_250', (ctx) => {
 bot.action ('btn_900')
 
 bot.action ('btn_1', async (ctx) => {
-  // let l = username1.findIndex(item => item.id == ctx.from.id)
-  // if (l != -1) {username1.splice(username1.findIndex(item => item.id == ctx.from.id),1)};
-  // username1.push({id: ctx.from.id, username1: ctx.from.username})
+  let m = username1.findIndex(item => item.id == ctx.from.id)
+  if (m != -1) {username1.splice(username1.findIndex(item => item.id == ctx.from.id),1)};
+  username1.push({id: ctx.from.id, username1: ctx.from.username})
 
   emailon[([(emailon.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, emailon: 0})
   end1[([(end1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, end1: 0})
@@ -453,7 +459,7 @@ bot.action ('btn_101', async (ctx) => {
 }
   else if ((bdinfo[([(bdinfo.findIndex(item => item.id == ctx.from.id))])].profile) == 'delete', (post[(post.findIndex(item => item.id == ctx.from.id))].post) == "1") {
   let mes = []
-  mes = await ctx.telegram.sendMessage(-1001670234693, (info[(info.findIndex(item => item.id == ctx.from.id))].info),
+  mes = await ctx.telegram.sendMessage(group, (info[(info.findIndex(item => item.id == ctx.from.id))].info),
   //  Markup.inlineKeyboard(
   //   [
   //      [Markup.button.callback('Message', 'btn_150'), Markup.button.callback('Message', '150'), Markup.button.callback('Message', '150')]
@@ -471,7 +477,7 @@ bot.action ('btn_101', async (ctx) => {
 }
 else { if ((post[(post.findIndex(item => item.id == ctx.from.id))].post) == "1") {
     let mes = []
-    mes = await ctx.telegram.sendMessage(-1001670234693, (info[(info.findIndex(item => item.id == ctx.from.id))].info)), 
+    mes = await ctx.telegram.sendMessage(group, (info[(info.findIndex(item => item.id == ctx.from.id))].info)), 
     await Post.updateOne({profiledating: 'profiledating', id: ctx.from.id}, { 
             profile: 'ok',
               idmes: mes.message_id,
@@ -485,6 +491,9 @@ else { if ((post[(post.findIndex(item => item.id == ctx.from.id))].post) == "1")
 
 
 bot.action ('btn_200', async (ctx) => {
+  let dell3 = []
+  dell3 = await Bel.find({profiledating: 'profiledating', id: ctx.from.id})
+if (dell3[0].profile == 'ok') {
   username1[([(username1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, username1: ctx.from.username})
   del1[([(del1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, del1: 0})
   if ((del1.find(item => item.del1 == 0)) == undefined){ 
@@ -492,19 +501,22 @@ bot.action ('btn_200', async (ctx) => {
   }
   else {if ((del1[(del1.findIndex(item => item.id == ctx.from.id))].del1) == "0") {
     let dell2 = []
-    dell2.push({id: ctx.from.id})
-    dell2[([(dell2.findIndex(item => item.id == ctx.from.id))])]= await Bel.find({profiledating: 'profiledating', id: ctx.from.id});
-    await Bel.updateOne({profiledating: 'profiledating', id: ctx.from.id}, { 
-          profile: 'deleted'
-      })
-  await ctx.telegram.deleteMessage(-1001670234693, dell2[([(dell2.findIndex(item => item.id == ctx.from.id))])].idmes)  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    dell2 = await Bel.find({profiledating: 'profiledating', id: ctx.from.id})
+  await ctx.telegram.deleteMessage(group, dell2[0].idmes)  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   await ctx.replyWithHTML("Анкета удалена! ❌\n\nПерезапустите бот.\n\nПерезапуск ➡️ <b>/start</b> ✅")
   await Bel.updateOne({profiledating: 'profiledating', id: ctx.from.id}, { 
      profiledata: 'Вы удалили вашу анкету',
-     idmes: false
+     idmes: false,
+     profile: 'deleted'
     })
-  del1[([(del1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, del1: 1})}
-}})
+  del1[([(del1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, del1: 1})
+  dell2 = splice(0,1)
+  dell3 = splice(0,1)}
+} }
+else {await ctx.replyWithHTML("У вас нет анкеты.\n\nПерезапуск ➡️ <b>/start</b> ✅")}
+})
+
+
 
 bot.on('message', async(ctx) => {
   prev_action.push({id: ctx.from.id, prev_action: 'step_0'})
