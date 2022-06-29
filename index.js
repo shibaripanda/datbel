@@ -314,7 +314,7 @@ bot.action ('btn_1', async (ctx) => {
   end1[([(end1.findIndex(item => item.id == ctx.from.id))])] = ({id: ctx.from.id, end1: 0})
 
   if (username1[([(username1.findIndex(item => item.id == ctx.from.id))])].username1 == undefined){
-    await ctx.reply("У тебя нет юзернейма. Тебя не смогут найти!\nУстанови юзернейм в настройказ телеграм\nСпасибо за внимаение!")
+    await ctx.reply("У тебя нет юзернейма❗️\nТебя не смогут написать собеседники!\nУстанови юзернейм в настройках телеграм.")
   }
 else{
   if ((end1[(end1.findIndex(item => item.id == ctx.from.id))].end1) == "0"){ 
